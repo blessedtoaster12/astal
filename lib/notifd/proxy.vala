@@ -55,7 +55,7 @@ internal class AstalNotifd.DaemonProxy : Object {
             var variant = bus.call_sync(
                 "org.freedesktop.Notifications",
                 "/org/freedesktop/Notifications",
-                "org.freedesktop.Notifications",
+                null,
                 "GetServerInformation",
                 null,
                 null,
