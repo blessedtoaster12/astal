@@ -51,11 +51,11 @@ internal class AstalNotifd.DaemonProxy : Object {
 
     public bool start() {
         try  {
-            var bus = Bus.get_sync(BusType.SESSION, null);
-            var variant = bus.call_sync(
+            var bus = Bus.get(BusType.SESSION, null);
+            var variant = bus.call(
                 "org.freedesktop.Notifications",
-                "/org/freedesktop/Notifications",
-                null,
+                "/org/freedesktop/Notifications", 
+                "org.freedesktop.Notifications",
                 "GetServerInformation",
                 null,
                 null,
@@ -84,7 +84,7 @@ internal class AstalNotifd.DaemonProxy : Object {
     }
 
     private void setup_proxy() throws Error {
-        proxy = Bus.get_proxy_sync(
+        proxy = Bus.get_proxy(
             BusType.SESSION,
             "org.freedesktop.Notifications",
             "/org/freedesktop/Notifications"
