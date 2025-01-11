@@ -52,7 +52,7 @@ internal class AstalNotifd.DaemonProxy : Object {
     public bool start() {
         try  {
             var bus = Bus.get_sync(BusType.SESSION, null);
-            var variant = bus.call(
+            var variant = bus.call_sync(
                 "org.freedesktop.Notifications",
                 "/org/freedesktop/Notifications", 
                 "org.freedesktop.Notifications",
@@ -60,7 +60,7 @@ internal class AstalNotifd.DaemonProxy : Object {
                 null,
                 null,
                 DBusCallFlags.NONE,
-                -1,
+                g_maxint,
                 null);
 
             var name = variant.get_child_value(0).get_string();
